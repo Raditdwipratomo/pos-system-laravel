@@ -15,6 +15,8 @@ use App\Livewire\Management\EditPaymentMethod;
 use App\Livewire\Management\EditUser;
 use App\Livewire\Management\ListPaymentMethods;
 use App\Livewire\Management\ListUsers;
+use App\Livewire\POS;
+use App\Livewire\Sales\EditSale;
 use App\Livewire\Sales\ListSales;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -65,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-inventory/{record}', EditInventory::class)->name('inventory.update');
     // Sales
     Route::get('/manage-sales', ListSales::class)->name('sales.index');
+    Route::get('/manage-sales/edit', EditSale::class)->name('sale.edit');
     // Customers
     Route::get('/manage-customers', ListCustomers::class)->name('customers.index');
     Route::get('/edit-customer/{record}', EditCustomer::class)->name('customer.update');
@@ -73,4 +76,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/manage-payment-methods', ListPaymentMethods::class)->name('payment.method.index');
     Route::get('/manage-payment-methods/create', CreatePaymentMethod::class)->name('payment.create');
     Route::get('/edit-payment-method/{record}', EditPaymentMethod::class)->name('payment.update');
+
+    Route::get('pos', POS::class)->name('pos');
 });
